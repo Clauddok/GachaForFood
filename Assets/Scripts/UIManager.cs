@@ -8,8 +8,12 @@ public class UIManager : MonoBehaviour
     public Text JewelPerClickDisplayer;
     public DataController dataController;
 
-
-    void Update()
+    void Start()
+    {
+        jewelDisplayer.text = "JEWEL: " + dataController.GetJewel();
+        JewelPerClickDisplayer.text = "JEWEL PER CLICK: " + dataController.GetJewelPerClick();
+    }
+    public void UpdateUI()
     {
         jewelDisplayer.text = "JEWEL: " + dataController.GetJewel();
         JewelPerClickDisplayer.text = "JEWEL PER CLICK: " + dataController.GetJewelPerClick();

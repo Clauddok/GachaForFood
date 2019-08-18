@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class ClickTest : MonoBehaviour
 {
-    public DataController dataController;
-    //public GameObject bmoCopy;
-    public int bmoTestbmo = 0;
 
-    void Start()
+    UIManager uiManager;
+
+    void Awake()
     {
-        //bmoCopy = GameObject.Find("BMO1");
-        bmoTestbmo = GameObject.Find("BMO1").GetComponent<BmoTest>().bmo;
+        uiManager = FindObjectOfType<Canvas>().GetComponent<UIManager>();
+    }
+    public void OnClickClick()
+    {
+        int jewelPerClick = DataController.GetInstance().GetJewelPerClick();
+        DataController.GetInstance().AddJewel(jewelPerClick);
+        uiManager.UpdateUI();
 
     }
-    public void OnClick()
-    {
-        int jewelPerClick = dataController.GetJewelPerClick();
-        dataController.AddJewel(jewelPerClick);
 
-        bmoTestbmo += 1;
-        
+    public void OnClickCons()
+    {
+        DataController.GetInstance().SetJewel(0);
+        uiManager.UpdateUI();
     }
 }
